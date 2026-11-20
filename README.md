@@ -1,70 +1,53 @@
-# Push_swap — Development Progress
+# Push_swap — Geliştirme Durumu
 
-## Project Overview
+## Projenin amacı
 
-This project is being developed as part of the **42 School curriculum**.
+Bu proje, **42 müfredatı** kapsamında geliştirilmektedir. Amaç, Stack A'daki tam sayıları Stack B'den ve izin verilen stack işlemlerinden yararlanarak mümkün olduğunca az işlemle sıralamaktır.
 
-The goal is to sort integers in Stack A using Stack B and a limited set of stack operations, while minimizing the number of operations.
+**Mevcut durum:** Stack veri yapısı ve temel yardımcı fonksiyonlar yazıldı. Sıralama algoritmalarına henüz başlanmadı.
 
-**Current status:** Stack data structure and basic helper functions implemented. Sorting algorithms have not been started yet.
+## Veri yapısı
 
-## Data Structure
+Stack'leri temsil etmek için **çift yönlü bağlı liste (Doubly Linked List)** seçildi.
 
-We chose a **Doubly Linked List** to represent our stacks.
+- `t_node`: `value` (sayı), `next` (sonraki düğüm), `prev` (önceki düğüm)
+- `t_stack`: `head` (stack'in üstündeki ilk düğüm), `tail` (en alttaki son düğüm), `size` (eleman sayısı)
 
-Each stack contains:
+Bu yapı, özellikle stack'in başından düğüm çıkarma ve başına düğüm ekleme işlemlerini bağlantıları güncelleyerek yapmamızı sağlar.
 
-- `head`: Pointer to the first (top) node
-- `tail`: Pointer to the last (bottom) node
-- `size`: Number of nodes
+## Yazılan fonksiyonlar
 
-Each node contains:
-
-- `value`: Integer value
-- `next`: Pointer to the next node
-- `prev`: Pointer to the previous node
-
-This structure allows efficient insertion and removal of nodes at the top of the stack.
-
-## Implemented Functions
-
-| Function | Purpose |
+| Fonksiyon | Görevi |
 |---|---|
-| `init_stack` | Initializes an empty stack |
-| `create_node` | Allocates and initializes a new node |
-| `add_back` | Adds a node to the end of a stack |
-| `pop_front` | Removes and returns the top node |
-| `add_front` | Adds a node to the top of a stack |
+| `init_stack` | Boş stack'i başlatır (`head`/`tail = NULL`, `size = 0`). |
+| `create_node` | Yeni düğüm için bellek ayırır ve alanlarını başlatır. |
+| `add_back` | Düğümü listenin sonuna (`tail` tarafına) ekler. |
+| `pop_front` | İlk düğümü listeden ayırır ve adresini döndürür; `free` etmez. |
+| `add_front` | Düğümü listenin başına (`head` tarafına) ekler. |
 
-### File Organization
+## Dosya düzeni
 
-- `push_swap.h` — Data structures and function declarations
-- `stack_init.c` — `init_stack`, `create_node`
-- `stack_utils.c` — `add_back`, `pop_front`, `add_front`
+- `push_swap.h` — Struct tanımları ve fonksiyon prototipleri
+- `stack_init.c` — `init_stack`, `create_node` (2/5)
+- `stack_utils.c` — `add_back`, `pop_front`, `add_front` (3/5)
 
-File organization is planned to respect the 42 Norminette limit of five functions per `.c` file.
+Dosya düzeni, **42 Norminette'in `.c` dosyası başına en fazla 5 fonksiyon** sınırına göre planlandı. Gerçek dosya konumları repoda kontrol edilmelidir.
 
-## Current Progress
+## Yapılacaklar
 
-- [x] Choose stack representation
-- [x] Define `t_node` and `t_stack`
-- [x] Implement stack initialization
-- [x] Implement node creation
-- [x] Implement basic node insertion and removal
-- [ ] Test stack helper functions
-- [ ] Implement stack operations (`sa`, `sb`, `pa`, `pb`, `ra`, etc.)
-- [ ] Implement sorting algorithms
-- [ ] Implement adaptive algorithm selection and benchmark output
-- [ ] Complete integration tests and optimization
+- [x] Stack veri yapısını seçmek ve struct'ları tasarlamak
+- [x] Stack başlatma ve düğüm oluşturma fonksiyonlarını yazmak
+- [x] Başa/sona ekleme ve baştan çıkarma yardımcı fonksiyonlarını yazmak
+- [ ] Yardımcı fonksiyonları derleyip test etmek; Norminette kontrolü yapmak
+- [ ] `pa` ve `pb` işlemlerini yazmak
+- [ ] Diğer push_swap işlemlerini tamamlamak
+- [ ] Sıralama algoritmalarını ve strateji seçimini geliştirmek
+- [ ] Benchmark, hata kontrolleri, bütünleşik testler ve optimizasyon
 
-## Where We Stopped
+## Nerede kaldık?
 
-**Last completed function:** `add_front()` in `stack_utils.c`.
+**Son tamamlanan fonksiyon:** `add_front` (`stack_utils.c`).
 
-**Next task:** Implement `pa` and `pb` using the existing `pop_front()` and `add_front()` helper functions.
+**Bir sonraki adım:** `pop_front` ve `add_front` yardımcılarını kullanarak `pa` ve `pb` işlemlerini yazmak. Bu işlemler, bir stack'in üstündeki düğümü diğer stack'in üstüne taşır; yeni düğüm oluşturulmaz.
 
-These operations will transfer the top node from one stack to the other without allocating a new node.
-
-## Notes
-
-This README documents the current development checkpoint, not a finished implementation. Functions have been reviewed logically during development but have not yet been confirmed through compilation, Norminette, or automated tests.
+> **Not:** Bu belge tamamlanmış ve test edilmiş bir projeyi değil, çalışma sırasında ulaşılan noktayı özetler. Fonksiyonlar mantıksal olarak incelendi; derleme, Norminette ve otomatik test sonuçları henüz doğrulanmadı.
