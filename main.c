@@ -6,11 +6,11 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:00:11 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/20 17:00:54 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/20 17:38:31 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 
 int	main(void)
 {
