@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/20 17:37:09 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/20 19:16:58 by emirhyil         ###   ########.fr       */
+/*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
+/*   Updated: 2026/11/22 19:03:14 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -26,9 +27,6 @@ typedef struct s_stack
 	struct s_node	*tail;
 	int				size;
 }					t_stack;
-
-# include <stdio.h>
-
 t_node				*create_node(int value);
 void				init_stack(t_stack *stack);
 void				add_back(t_stack *stack, t_node *new_node);
