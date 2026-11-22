@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 19:04:06 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/22 19:05:47 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/23 02:06:51 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,23 @@ t_node	*pop_front(t_stack *stack)
 	return (temp);
 }
 
+t_node	*pop_back(t_stack *stack)
+{
+	t_node	*temp;
+
+	if (!stack || !stack->tail)
+		return (NULL);
+	temp = stack->tail;
+	stack->tail = stack->tail->prev;
+	if (stack->tail != NULL)
+		stack->tail->next = NULL;
+	else
+		stack->head = NULL;
+	temp->prev = NULL;
+	stack->size -= 1;
+	return (temp);
+}
+
 void	add_front(t_stack *stack, t_node *new_node)
 {
 	if (stack->head == NULL)
@@ -63,32 +80,24 @@ void	add_front(t_stack *stack, t_node *new_node)
 
 double	compute_disorder(t_stack *stack_a)
 {
-	int stack_size;
 	int mistakes;
-	int total_pairs;
-	t_node *curr_node;
-	t_node *next_node;
+	t_node *curr;
+	t_node *next;
 
-	stack_size = stack_a->size;
-	
-	if(!stack_a || stack_a ->size <2)
-		return(0.0);
+	if (!stack_a || stack_a->size < 2)
+		return (0.0);
 	mistakes = 0;
-	total_pairs = 0;
-
-	curr_node = stack_a->head;
-
-	while (curr_node != NULL)
+	curr = stack_a->head;
+	while (curr)
 	{
-		next_node = curr_node->next;
-		while (next_node != NULL)
+		next = curr->next;
+		while (next)
 		{
-			if (curr_node->value > next_node->value)
+			if (curr->value > next->value)
 				mistakes++;
-			next_node = next_node->next;
+			next = next->next;
 		}
-		curr_node = curr_node->next;
+		curr = curr->next;
 	}
-	total_pairs = (stack_size * (stack_size - 1)) / 2;
-	return ((double)mistakes / total_pairs);
+	return ((double)mistakes / ((stack_a->size * (stack_a->size - 1)) / 2));
 }
