@@ -6,13 +6,31 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 17:01:07 by mmetin            #+#    #+#             */
-/*   Updated: 2026/11/24 02:07:03 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/24 02:47:17 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
+int	get_number(const char *number)
+{
+	int	nb;
+	int	sign;
+
+	nb = 0;
+	sign = 1;
+	if (*number == '-')
+		sign = -1;
+	if (*number == '+' || *number == '-')
+		number++;
+	while (*number >= '0' && *number <= '9')
+	{
+		nb = nb * 10 + (*number - '0');
+		number++;
+	}
+	return (sign * nb);
+}
 int	is_valid_number(char *number)
 {
 	long int	nb;
@@ -43,9 +61,8 @@ int	parse_args(int argc, char **argv, t_stack *stack)
 	int		i;
 	int		j;
 	char	**numbers;
+	t_node	*new_node;
 
-	(void)stack;
-	printf("Toplam argc: %d\n", argc);
 	i = 1;
 	while (i < argc)
 	{
@@ -53,17 +70,15 @@ int	parse_args(int argc, char **argv, t_stack *stack)
 		j = 0;
 		while (numbers[j])
 		{
-			//printf("Ayrıştırılan Sayı: %s\n", numbers[j]);
-			if (is_valid_number(numbers[j]))
-			{
-				printf("valid %s\n", numbers[j]);
-			}
-			else
-			{
-				printf("invalid %s\n", numbers[j]);
-			}
+			if (!is_valid_number(numbers[j]))
+				error(stack, numbers);
+			new_node = create_node(get_number(numbers[j]));
+			if (!new_node)
+				error(stack, numbers);
+			add_back(stack, new_node);
 			j++;
 		}
+		free_split(numbers);
 		i++;
 	}
 	return (1);

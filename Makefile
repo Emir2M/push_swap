@@ -11,7 +11,8 @@ SRCS = create_node.c \
        push_operations.c \
        rotate_operations.c \
        reverse_rotate_operations.c \
-       free_stack.c \
+       free_operations.c \
+       error_operations.c \
        ft_split.c
 
 OBJS = $(SRCS:.c=.o)

@@ -63,10 +63,14 @@ void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
-/* free stack  */
+/* Free operations */
 void	free_stack(t_stack *stack);
+void	free_split(char **split);
 
-/* split */
+/* Error operations */
+void	error(t_stack *stack, char **numbers);
+
+/* Split */
 char	**ft_split(char const *s, char c);
 
 #endif
