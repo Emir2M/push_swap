@@ -64,8 +64,10 @@ Dosya düzeni, **42 Norminette'in `.c` dosyası başına en fazla 5 fonksiyon** 
 
 ## Nerede kaldık?
 
-**Son tamamlanan işlemler:** Tüm temel push_swap hareketleri (`pa`/`pb`, `sa`/`sb`/`ss`, `ra`/`rb`/`rr`, `rra`/`rrb`/`rrr`), stack yardımcıları (`pop_front`, `pop_back`, `add_front`, `add_back`) ve `compute_disorder`.
+**Son tamamlanan işlemler:** Tüm temel push_swap hareketleri (`pa`/`pb`, `sa`/`sb`/`ss`, `ra`/`rb`/`rr`, `rra`/`rrb`/`rrr`), stack yardımcıları (`pop_front`, `pop_back`, `add_front`, `add_back`), `compute_disorder` ve bağımsız test sürücüsü (`make test`).
 
-**Bir sonraki adım:** Bellek temizliği (`free_stack`) fonksiyonunu yazmak, ardından girdi ayrıştırma (parsing) ve hata kontrollerine geçmek.
+**İş Bölümü ve Yol Haritası:** Takım çalışması, dosya sorumlulukları ve conflict önleme kuralları için [TASK_PLAN.md](TASK_PLAN.md) belgesine bakınız.
+
+**Bir sonraki adım:** Bellek temizliği (`free_stack`) fonksiyonunu yazmak, ardından girdi ayrıştırma (parsing) ve sıralama algoritmalarına paralel olarak geçmek.
 
 > **Not:** Bu belge tamamlanmış ve test edilmiş bir projeyi değil, çalışma sırasında ulaşılan noktayı özetler. Fonksiyonlar mantıksal olarak incelendi; derleme, Norminette ve otomatik test sonuçları henüz doğrulanmadı.
