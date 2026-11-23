@@ -6,7 +6,7 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 18:26:21 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/23 18:27:15 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	move_min_to_top(t_stack *a);
 void	simple_sort(t_stack *a, t_stack *b);
 
 /* free stack  */
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack *stack);
 
 #endif
