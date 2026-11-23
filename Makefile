@@ -7,7 +7,8 @@ SRCS = create_node.c \
        swap_operations.c \
        push_operations.c \
        rotate_operations.c \
-       reverse_rotate_operations.c
+       reverse_rotate_operations.c \
+       simple_sort.c
 
 OBJS = $(SRCS:.c=.o)
 TEST_NAME = test_runner
