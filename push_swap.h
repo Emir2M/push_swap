@@ -66,4 +66,7 @@ void				rrr(t_stack *a, t_stack *b);
 /* free stack  */
 void	free_stack(t_stack *stack);
 
+/* split */
+char	**ft_split(char const *s, char c);
+
 #endif
