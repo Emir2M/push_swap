@@ -6,7 +6,7 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 16:24:51 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/23 17:09:59 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
 /* free stack  */
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack *stack);
 
 #endif
