@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 16:24:51 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/23 18:26:21 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void				reverse_rotate_nodes(t_stack *stack);
 void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
+
+// emirhyil ekledikleri 
+int find_min_position(t_stack *a);
+void	move_min_to_top(t_stack *a);
+void	simple_sort(t_stack *a, t_stack *b);
 
 /* free stack  */
 void	free_stack(t_stack *stack)

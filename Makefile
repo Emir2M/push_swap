@@ -8,6 +8,8 @@ SRCS = create_node.c \
        push_operations.c \
        rotate_operations.c \
        reverse_rotate_operations.c \
+       simple_sort.c
+       reverse_rotate_operations.c \
        free_stack.c
 
 OBJS = $(SRCS:.c=.o)
