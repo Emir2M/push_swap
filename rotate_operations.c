@@ -50,7 +50,3 @@ void	rr(t_stack *a, t_stack *b)
 		write(1, "rr\n", 3);
 	}
 }
-
-void	rra(t_stack *a)
-{
-}
