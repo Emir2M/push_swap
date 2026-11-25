@@ -17,6 +17,8 @@ SRCS = create_node.c \
        init_config.c \
        ft_strcmp.c \
        ft_split.c \
+       parsing.c \
+       parsing_utils.c \
        index_utils.c \
        medium_sort.c \
        complex_sort.c \

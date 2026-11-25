@@ -76,16 +76,16 @@ void				free_split(char **split);
 /* Error operations */
 void				error(t_stack *stack, char **numbers);
 
-/* Split */
+/* Split & Strcmp */
 char				**ft_split(char const *s, char c);
-/* free stack  */
-void				free_stack(t_stack *stack);
-/* Index operations */
+int					ft_strcmp(char *s1, char *s2);
+
+/* Sorting & Index */
 void				assign_indices(t_stack *a);
+void				simple_sort(t_stack *a, t_stack *b);
 void				medium_sort(t_stack *a, t_stack *b);
 void				complex_sort(t_stack *a, t_stack *b);
 void				adaptive_sort(t_stack *a, t_stack *b);
-int					ft_strcmp(char *s1, char *s2);
 
 typedef enum e_strategy
 {
@@ -103,6 +103,12 @@ typedef struct s_config
 	int				total_operations;
 }					t_config;
 
+/* Config & Parsing operations */
 void				init_config(t_config *config);
+int					is_valid_number(char *number);
+int					get_number(const char *number);
+int					has_duplicate(t_stack *stack, int num);
+int					handle_flag(char *str, t_config *config);
+int					parse_args(int argc, char **argv, t_stack *stack, t_config *config);
 
 #endif
