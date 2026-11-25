@@ -6,7 +6,7 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 21:01:36 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 21:31:01 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void				assign_indices(t_stack *a);
 void				medium_sort(t_stack *a, t_stack *b);
 void				complex_sort(t_stack *a, t_stack *b);
 void				adaptive_sort(t_stack *a, t_stack *b);
+int					ft_strcmp(char *s1, char *s2);
 
 typedef enum e_strategy
 {

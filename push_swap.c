@@ -6,7 +6,7 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 17:01:07 by mmetin            #+#    #+#             */
-/*   Updated: 2026/11/25 21:01:52 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 22:04:09 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,23 @@ int	is_valid_number(char *number)
 		return (0);
 	return (1);
 }
-int	parse_args(int argc, char **argv, t_stack *stack)
+int	handle_flag(char *str, t_config *config)
+{
+	if (!ft_strcmp(str, "--simple"))
+		config->strategy = SIMPLE;
+	else if (!ft_strcmp(str, "--medium"))
+		config->strategy = MEDIUM;
+	else if (!ft_strcmp(str, "--complex"))
+		config->strategy = COMPLEX;
+	else if (!ft_strcmp(str, "--adaptive"))
+		config->strategy = ADAPTIVE;
+	else if (!ft_strcmp(str, "--bench"))
+		config->bench_mode = 1;
+	else
+		return (0);
+	return 1;
+}
+int	parse_args(int argc, char **argv, t_stack *stack, t_config *config)
 {
 	int		i;
 	int		j;
@@ -70,6 +86,14 @@ int	parse_args(int argc, char **argv, t_stack *stack)
 		j = 0;
 		while (numbers[j])
 		{
+			printf("argv[%d] : %s\n", j, numbers[j]);
+			if (numbers[j][0] == '-' && numbers[j][1] == '-')
+			{
+				if (!handle_flag(numbers[j], config))
+					error(stack, numbers);
+				j++;
+				continue ;
+			}
 			if (!is_valid_number(numbers[j]))
 				error(stack, numbers);
 			new_node = create_node(get_number(numbers[j]));
@@ -86,9 +110,10 @@ int	parse_args(int argc, char **argv, t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	t_stack	a;
-	t_stack	b;
-	t_config config;
+	t_stack		a;
+	t_stack		b;
+	t_config	config;
+
 	if (argc < 2)
 		return (0);
 	init_stack(&a);
@@ -100,6 +125,6 @@ int	main(int argc, char **argv)
 	// 	write(2, "Error\n", 6);
 	// 	return (1);
 	// }
-	parse_args(argc, argv, &a);
+	parse_args(argc, argv, &a, &config);
 	return (0);
 }
