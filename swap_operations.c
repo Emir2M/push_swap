@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 17:12:49 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 01:22:10 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 19:34:43 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	swap_nodes(t_stack *stack)
 {
-	t_node *temp_node1;
-	t_node *temp_node2;
+	t_node	*temp_node1;
+	t_node	*temp_node2;
 
 	if (!stack || stack->head == NULL || stack->head->next == NULL)
 		return ;
-
 	temp_node1 = stack->head;
 	temp_node2 = stack->head->next;
 	temp_node1->next = temp_node2->next;
@@ -39,6 +38,11 @@ void	sa(t_stack *a)
 		return ;
 	swap_nodes(a);
 	write(1, "sa\n", 3);
+	if (a->bench)
+	{
+		a->bench->sa++;
+		a->bench->total++;
+	}
 }
 
 void	sb(t_stack *b)
@@ -47,6 +51,11 @@ void	sb(t_stack *b)
 		return ;
 	swap_nodes(b);
 	write(1, "sb\n", 3);
+	if (b->bench)
+	{
+		b->bench->sb++;
+		b->bench->total++;
+	}
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -56,5 +65,10 @@ void	ss(t_stack *a, t_stack *b)
 		swap_nodes(a);
 		swap_nodes(b);
 		write(1, "ss\n", 3);
+	}
+	if (a->bench)
+	{
+		a->bench->ss++;
+		a->bench->total++;
 	}
 }

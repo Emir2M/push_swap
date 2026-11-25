@@ -19,7 +19,8 @@ SRCS = create_node.c \
        medium_sort.c \
        complex_sort.c \
        adaptive_sort.c \
-       compute_disorder.c \
+       benchmark.c \
+       benchmark_print.c \
 
 OBJS = $(SRCS:.c=.o)
 

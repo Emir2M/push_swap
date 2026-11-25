@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 15:49:37 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 01:22:05 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 19:30:05 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	add_front(b, temp);
 	write(1, "pb\n", 3);
+	if (a->bench)
+	{
+		a->bench->pb++;
+		a->bench->total++;
+	}
 }
 
 void	pa(t_stack *a, t_stack *b)
@@ -32,4 +37,9 @@ void	pa(t_stack *a, t_stack *b)
 		return ;
 	add_front(a, temp);
 	write(1, "pa\n", 3);
+	if (a->bench)
+	{
+		a->bench->pa++;
+		a->bench->total++;
+	}
 }
