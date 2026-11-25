@@ -39,6 +39,7 @@ void	sa(t_stack *a)
 		return ;
 	swap_nodes(a);
 	write(1, "sa\n", 3);
+	count_op(a, OP_SA);
 }
 
 void	sb(t_stack *b)
@@ -47,6 +48,7 @@ void	sb(t_stack *b)
 		return ;
 	swap_nodes(b);
 	write(1, "sb\n", 3);
+	count_op(b, OP_SB);
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -56,5 +58,9 @@ void	ss(t_stack *a, t_stack *b)
 		swap_nodes(a);
 		swap_nodes(b);
 		write(1, "ss\n", 3);
+		if (a && a->config)
+			count_op(a, OP_SS);
+		else
+			count_op(b, OP_SS);
 	}
 }

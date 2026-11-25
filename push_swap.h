@@ -6,7 +6,7 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 21:31:01 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/26 02:24:07 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,39 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# define OP_COUNT 11
+
+typedef enum e_op
+{
+	OP_SA,
+	OP_SB,
+	OP_SS,
+	OP_PA,
+	OP_PB,
+	OP_RA,
+	OP_RB,
+	OP_RR,
+	OP_RRA,
+	OP_RRB,
+	OP_RRR
+}					t_op;
+typedef enum e_strategy
+{
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLEX
+}					t_strategy;
+
+typedef struct s_config
+{
+	t_strategy		strategy;
+	int				bench_mode;
+	double			disorder;
+	int				total_operations;
+	int				op_count[OP_COUNT];
+}					t_config;
 
 typedef struct s_node
 {
@@ -29,6 +62,7 @@ typedef struct s_stack
 	struct s_node	*head;
 	struct s_node	*tail;
 	int				size;
+	t_config		*config;
 }					t_stack;
 
 /* Node & Stack initialization */
@@ -67,7 +101,6 @@ void				rrr(t_stack *a, t_stack *b);
 // emirhyil ekledikleri
 int					find_min_position(t_stack *a);
 void				move_min_to_top(t_stack *a);
-void				simple_sort(t_stack *a, t_stack *b);
 
 /* Free operations */
 void				free_stack(t_stack *stack);
@@ -87,28 +120,14 @@ void				medium_sort(t_stack *a, t_stack *b);
 void				complex_sort(t_stack *a, t_stack *b);
 void				adaptive_sort(t_stack *a, t_stack *b);
 
-typedef enum e_strategy
-{
-	ADAPTIVE,
-	SIMPLE,
-	MEDIUM,
-	COMPLEX
-}					t_strategy;
-
-typedef struct s_config
-{
-	t_strategy		strategy;
-	int				bench_mode;
-	double			disorder;
-	int				total_operations;
-}					t_config;
-
 /* Config & Parsing operations */
 void				init_config(t_config *config);
+void				count_op(t_stack *stack, t_op op);
 int					is_valid_number(char *number);
 int					get_number(const char *number);
 int					has_duplicate(t_stack *stack, int num);
 int					handle_flag(char *str, t_config *config);
-int					parse_args(int argc, char **argv, t_stack *stack, t_config *config);
+int					parse_args(int argc, char **argv, t_stack *stack,
+						t_config *config);
 
 #endif

@@ -18,6 +18,7 @@ void	ra(t_stack *a)
 	{
 		rotate_nodes(a);
 		write(1, "ra\n", 3);
+		count_op(a, OP_RA);
 	}
 }
 
@@ -27,6 +28,7 @@ void	rb(t_stack *b)
 	{
 		rotate_nodes(b);
 		write(1, "rb\n", 3);
+		count_op(b, OP_RB);
 	}
 }
 
@@ -48,5 +50,9 @@ void	rr(t_stack *a, t_stack *b)
 		rotate_nodes(a);
 		rotate_nodes(b);
 		write(1, "rr\n", 3);
+		if (a && a->config)
+			count_op(a, OP_RR);
+		else
+			count_op(b, OP_RR);
 	}
 }

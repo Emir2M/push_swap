@@ -21,6 +21,7 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	add_front(b, temp);
 	write(1, "pb\n", 3);
+	count_op(a, OP_PB);
 }
 
 void	pa(t_stack *a, t_stack *b)
@@ -32,4 +33,5 @@ void	pa(t_stack *a, t_stack *b)
 		return ;
 	add_front(a, temp);
 	write(1, "pa\n", 3);
+	count_op(a, OP_PA);
 }
