@@ -6,74 +6,108 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 18:42:26 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 19:22:59 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 17:56:36 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_index(t_stack *a, int value)
+static int	get_chunk_size(int size)
 {
-	int		index;
-	t_node	*current;
+	int	chunk;
 
-	index = 0;
-	current = a->head;
-	while (current != NULL)
-	{
-		if (current->value < value)
-			index++;
-		current = current->next;
-	}
-	return (index);
+	chunk = 1;
+	while ((chunk + 1) <= size / (chunk + 1))
+		chunk++;
+	return (chunk);
 }
 
-void	copy_values(t_stack *a, int *arr)
+static void	push_chunks(t_stack *a, t_stack *b, int chunk)
 {
-	t_node	*current;
-	int		i;
+	int	pushed;
 
-	i = 0;
-	current = a->head;
-	while (current != NULL)
+	pushed = 0;
+	while (a->size > 0)
 	{
-		arr[i] = current->value;
-		i++;
-		current = current->next;
-	}
-}
-
-void	sort_array(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	key;
-
-	i = 1;
-	while (i < size)
-	{
-		key = arr[i];
-		j = i - 1;
-		while (j >= 0 && arr[j] > key)
+		if (a->head->index < pushed)
 		{
-			arr[j + 1] = arr[j];
-			j--;
+			pb(a, b);
+			rb(b);
+			pushed++;
 		}
-		arr[j + 1] = key;
-		i++;
+		else if (a->head->index - pushed < chunk)
+		{
+			pb(a, b);
+			pushed++;
+		}
+		else
+			ra(a);
 	}
 }
 
-int	get_sorted_index(int *arr, int size, int value)
+static int	find_max_position(t_stack *b)
 {
-	int i;
+	t_node	*current;
+	int		max;
+	int		max_pos;
+	int		pos;
 
-	i = 0;
-	while (i < size)
+	if (!b || !b->head)
+		return (-1);
+	current = b->head;
+	max = current->index;
+	max_pos = 0;
+	pos = 0;
+	while (current != NULL)
 	{
-		if (arr[i] == value)
-			return (i);
-		i++;
+		if (current->index > max)
+		{
+			max = current->index;
+			max_pos = pos;
+		}
+		current = current->next;
+		pos++;
 	}
-	return (-1);
+	return (max_pos);
+}
+
+static void	move_max_to_top(t_stack *b)
+{
+	int	pos;
+
+	pos = find_max_position(b);
+	if (pos < 0)
+		return ;
+	if (pos <= b->size / 2)
+	{
+		while (pos > 0)
+		{
+			rb(b);
+			pos--;
+		}
+	}
+	else
+	{
+		while (pos < b->size)
+		{
+			rrb(b);
+			pos++;
+		}
+	}
+}
+
+void	medium_sort(t_stack *a, t_stack *b)
+{
+	int	chunk;
+
+	if (!a || !b || a->size < 2)
+		return ;
+	assign_indices(a);
+	chunk = get_chunk_size(a->size);
+	push_chunks(a, b, chunk);
+	while (b->size > 0)
+	{
+		move_max_to_top(b);
+		pa(a, b);
+	}
 }

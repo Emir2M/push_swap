@@ -6,7 +6,7 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 17:01:11 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 17:55:10 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ void				error(t_stack *stack, char **numbers);
 char				**ft_split(char const *s, char c);
 /* free stack  */
 void				free_stack(t_stack *stack);
+/* Index operations */
+void	assign_indices(t_stack *a);
+void	medium_sort(t_stack *a, t_stack *b);
 
 #endif

@@ -14,7 +14,9 @@ SRCS = create_node.c \
        simple_sort.c \
        free_operations.c \
        error_operations.c \
-       ft_split.c
+       ft_split.c \
+       index_utils.c \
+       medium_sort.c \
 
 OBJS = $(SRCS:.c=.o)
 

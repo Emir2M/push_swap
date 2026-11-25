@@ -6,7 +6,7 @@ static void run_test(int *values, int size)
 {
     t_stack a = {0};
     t_stack b = {0};
-    t_node nodes[100] = {0};
+    t_node nodes[500] = {0};
     t_node *cur;
     int i = 0;
     int sorted = 1;
@@ -25,7 +25,7 @@ static void run_test(int *values, int size)
     a.tail = &nodes[size - 1];
     a.size = size;
 
-    simple_sort(&a, &b);
+    medium_sort(&a, &b);
 
     cur = a.head;
     while (cur && cur->next)
@@ -42,18 +42,26 @@ static void run_test(int *values, int size)
 
 int main(void)
 {
-    int five[] = {8, 3, 5, 1, 7};
-    int ten[] = {10, 3, 8, 1, 6, 9, 2, 7, 5, 4};
-    int hundred[100];
-    int i = 0;
+	int values[500];
+	int i;
+	int j;
+	int temp;
 
-    run_test(five, 5);
-    run_test(ten, 10);
-    while (i < 100)
-    {
-        hundred[i] = 100 - i;
-        i++;
-    }
-    run_test(hundred, 100);
-    return (0);
+	i = 0;
+	while (i < 500)
+	{
+		values[i] = i + 1;
+		i++;
+	}
+	i = 499;
+	while (i > 0)
+	{
+		j = rand() % (i + 1);
+		temp = values[i];
+		values[i] = values[j];
+		values[j] = temp;
+		i--;
+	}
+	run_test(values, 500);
+	return (0);
 }
