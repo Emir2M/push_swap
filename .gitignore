@@ -1,0 +1,28 @@
+# === Derleme ve Binary Dosyaları ===
+*.o 
+*.a
+*.so
+*.dylib
+*.gch
+*.dSYM/
+push_swap
+checker 
+test_runner 
+test_sort
+test_*
+  
+# === macOS Sistem Dosyaları ===
+.DS_Store 
+._*
+  
+# === Editör / IDE Dosyaları ===
+.vscode/
+.idea/ 
+*.swp
+*.swo 
+*~
+  
+# === Log ve Geçici Dosyalar ===
+*.log
+*.out
+valgrind-*.txt 
