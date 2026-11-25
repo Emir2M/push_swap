@@ -17,6 +17,7 @@ SRCS = create_node.c \
        ft_split.c \
        index_utils.c \
        medium_sort.c \
+       complex_sort.c \
 
 OBJS = $(SRCS:.c=.o)
 

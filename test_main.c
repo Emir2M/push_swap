@@ -25,7 +25,7 @@ static void run_test(int *values, int size)
     a.tail = &nodes[size - 1];
     a.size = size;
 
-    medium_sort(&a, &b);
+    complex_sort(&a, &b);
 
     cur = a.head;
     while (cur && cur->next)
