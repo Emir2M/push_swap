@@ -14,12 +14,12 @@ SRCS = create_node.c \
        simple_sort.c \
        free_operations.c \
        error_operations.c \
+       init_config.c \
        ft_split.c \
        index_utils.c \
        medium_sort.c \
        complex_sort.c \
-       adaptive_sort.c \
-       compute_disorder.c \
+       adaptive_sort.c
 
 OBJS = $(SRCS:.c=.o)
 

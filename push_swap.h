@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 19:09:21 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 21:01:36 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,24 @@ void				free_stack(t_stack *stack);
 void				assign_indices(t_stack *a);
 void				medium_sort(t_stack *a, t_stack *b);
 void				complex_sort(t_stack *a, t_stack *b);
-void	adaptive_sort(t_stack *a, t_stack *b);
+void				adaptive_sort(t_stack *a, t_stack *b);
+
+typedef enum e_strategy
+{
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLEX
+}					t_strategy;
+
+typedef struct s_config
+{
+	t_strategy		strategy;
+	int				bench_mode;
+	double			disorder;
+	int				total_operations;
+}					t_config;
+
+void				init_config(t_config *config);
 
 #endif

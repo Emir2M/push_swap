@@ -6,7 +6,7 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 17:01:07 by mmetin            #+#    #+#             */
-/*   Updated: 2026/11/24 02:47:17 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 21:01:52 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,12 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-
+	t_config config;
 	if (argc < 2)
 		return (0);
 	init_stack(&a);
 	init_stack(&b);
+	init_config(&config);
 	// if (!parse_args(argc, argv, &a))
 	// {
 	// 	free_stack(&a);
