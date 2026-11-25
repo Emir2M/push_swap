@@ -21,6 +21,7 @@ SRCS = create_node.c \
        adaptive_sort.c \
        benchmark.c \
        benchmark_print.c \
+       options.c \
 
 OBJS = $(SRCS:.c=.o)
 

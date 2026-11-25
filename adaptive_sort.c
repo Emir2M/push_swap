@@ -6,7 +6,7 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 18:53:54 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 19:08:49 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 20:21:57 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 void	adaptive_sort(t_stack *a, t_stack *b)
 {
 	double	disorder;
+	int		strategy;
 
 	if (!a || !b || a->size < 2)
 		return ;
 	disorder = compute_disorder(a);
 	if (disorder == 0.0)
 		return ;
-	if (disorder < 0.2)
+	strategy = select_strategy(MODE_ADAPTIVE, disorder);
+	if (strategy == MODE_SIMPLE)
 		simple_sort(a, b);
-	if (disorder < 0.5)
+	else if (strategy == MODE_MEDIUM)
 		medium_sort(a, b);
-	else
+	else if (strategy == MODE_COMPLEX)
 		complex_sort(a, b);
 }

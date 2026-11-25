@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 17:01:07 by mmetin            #+#    #+#             */
-/*   Updated: 2026/11/24 02:47:17 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 20:23:53 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	get_number(const char *number)
 	}
 	return (sign * nb);
 }
+
 int	is_valid_number(char *number)
 {
 	long int	nb;
@@ -56,14 +57,15 @@ int	is_valid_number(char *number)
 		return (0);
 	return (1);
 }
-int	parse_args(int argc, char **argv, t_stack *stack)
+
+int	parse_args(int argc, char **argv, t_stack *stack, int start)
 {
 	int		i;
 	int		j;
 	char	**numbers;
 	t_node	*new_node;
 
-	i = 1;
+	i = start;
 	while (i < argc)
 	{
 		numbers = ft_split(argv[i], ' ');
@@ -93,12 +95,7 @@ int	main(int argc, char **argv)
 		return (0);
 	init_stack(&a);
 	init_stack(&b);
-	// if (!parse_args(argc, argv, &a))
-	// {
-	// 	free_stack(&a);
-	// 	write(2, "Error\n", 6);
-	// 	return (1);
-	// }
-	parse_args(argc, argv, &a);
+	parse_args(argc, argv, &a, 1);
+	free_stack(&a);
 	return (0);
 }

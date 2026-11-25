@@ -6,7 +6,7 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 19:52:13 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 20:20:49 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# define MODE_ADAPTIVE 0
+# define MODE_SIMPLE 1
+# define MODE_MEDIUM 2
+# define MODE_COMPLEX 3
+
+typedef struct s_options
+{
+	int				strategy;
+	int				bench;
+	int				start;
+}					t_options;
 
 typedef struct s_bench
 {
@@ -83,5 +95,13 @@ void				complex_sort(t_stack *a, t_stack *b);
 void				adaptive_sort(t_stack *a, t_stack *b);
 void				init_bench(t_bench *bench);
 void				bench_putnbr(int n);
+void				bench_putop(char *name, int count);
+void				bench_print_ops(t_bench *bench);
+void				bench_print_disorder(double disorder);
+void				bench_print_strategy(int strategy);
+void				print_benchmark(t_bench *bench, int strategy);
+void				init_options(t_options *options);
+int					parse_options(int argc, char **argv, t_options *options);
+int					select_strategy(int strategy, double disorder);
 
 #endif
