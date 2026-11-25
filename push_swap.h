@@ -6,7 +6,7 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 18:33:04 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 19:09:21 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ char				**ft_split(char const *s, char c);
 /* free stack  */
 void				free_stack(t_stack *stack);
 /* Index operations */
-void	assign_indices(t_stack *a);
-void	medium_sort(t_stack *a, t_stack *b);
-void	complex_sort(t_stack *a, t_stack *b);
+void				assign_indices(t_stack *a);
+void				medium_sort(t_stack *a, t_stack *b);
+void				complex_sort(t_stack *a, t_stack *b);
+void	adaptive_sort(t_stack *a, t_stack *b);
 
 #endif

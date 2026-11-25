@@ -25,7 +25,8 @@ static void run_test(int *values, int size)
     a.tail = &nodes[size - 1];
     a.size = size;
 
-    complex_sort(&a, &b);
+    printf("Disorder: %.4f\n", compute_disorder(&a));
+    adaptive_sort(&a, &b);
 
     cur = a.head;
     while (cur && cur->next)
@@ -42,26 +43,14 @@ static void run_test(int *values, int size)
 
 int main(void)
 {
-	int values[500];
-	int i;
-	int j;
-	int temp;
+	int sorted[] = {1, 2, 3, 4, 5};
+	int low[] = {2, 1, 3, 4, 5};
+	int medium[] = {3, 2, 1, 4, 5};
+	int high[] = {5, 4, 3, 2, 1};
 
-	i = 0;
-	while (i < 500)
-	{
-		values[i] = i + 1;
-		i++;
-	}
-	i = 499;
-	while (i > 0)
-	{
-		j = rand() % (i + 1);
-		temp = values[i];
-		values[i] = values[j];
-		values[j] = temp;
-		i--;
-	}
-	run_test(values, 500);
+	run_test(sorted, 5);
+	run_test(low, 5);
+	run_test(medium, 5);
+	run_test(high, 5);
 	return (0);
 }
