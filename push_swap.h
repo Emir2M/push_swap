@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/25 15:19:15 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/25 17:01:11 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -20,6 +19,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -64,21 +64,21 @@ void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
-// emirhyil ekledikleri 
-int find_min_position(t_stack *a);
-void	move_min_to_top(t_stack *a);
-void	simple_sort(t_stack *a, t_stack *b);
+// emirhyil ekledikleri
+int					find_min_position(t_stack *a);
+void				move_min_to_top(t_stack *a);
+void				simple_sort(t_stack *a, t_stack *b);
 
 /* Free operations */
-void	free_stack(t_stack *stack);
-void	free_split(char **split);
+void				free_stack(t_stack *stack);
+void				free_split(char **split);
 
 /* Error operations */
-void	error(t_stack *stack, char **numbers);
+void				error(t_stack *stack, char **numbers);
 
 /* Split */
-char	**ft_split(char const *s, char c);
+char				**ft_split(char const *s, char c);
 /* free stack  */
-void	free_stack(t_stack *stack);
+void				free_stack(t_stack *stack);
 
 #endif

@@ -1,73 +1,78 @@
 # Push_swap — Geliştirme Durumu
 
-## Projenin amacı
+42 müfredatı kapsamında geliştirilen bu proje, Stack A'daki tam sayıları Stack B ve izin verilen işlemlerle mümkün olduğunca az hamlede sıralamayı amaçlar.
 
-Bu proje, **42 müfredatı** kapsamında geliştirilmektedir. Amaç, Stack A'daki tam sayıları Stack B'den ve izin verilen stack işlemlerinden yararlanarak mümkün olduğunca az işlemle sıralamaktır.
-
-**Mevcut durum:** Stack veri yapısı ve temel yardımcı fonksiyonlar yazıldı. Sıralama algoritmalarına henüz başlanmadı.
+**Güncel durum:** `dev` — 25 Kasım 2026, `987d499`. Proje geliştirme aşamasındadır; henüz teslim edilebilir değildir.
 
 ## Veri yapısı
 
-Stack'leri temsil etmek için **çift yönlü bağlı liste (Doubly Linked List)** seçildi.
+Çift yönlü bağlı liste (Doubly Linked List) kullanılır.
 
-- `t_node`: `value` (sayı), `next` (sonraki düğüm), `prev` (önceki düğüm)
-- `t_stack`: `head` (stack'in üstündeki ilk düğüm), `tail` (en alttaki son düğüm), `size` (eleman sayısı)
+- `t_node`: `value`, `next`, `prev`.
+- `t_stack`: `head` (üst), `tail` (alt), `size`.
+- Sabit sıralama indeksi (`index`) henüz eklenmemiştir.
 
-Bu yapı, özellikle stack'in başından düğüm çıkarma ve başına düğüm ekleme işlemlerini bağlantıları güncelleyerek yapmamızı sağlar.
+## Dosyalar ve mevcut durum
 
-## Yazılan fonksiyonlar
-
-| Fonksiyon | Görevi |
+| Dosya | Fonksiyonlar / durum |
 |---|---|
-| `init_stack` | Boş stack'i başlatır (`head`/`tail = NULL`, `size = 0`). |
-| `create_node` | Yeni düğüm için bellek ayırır ve alanlarını başlatır. |
-| `add_back` | Düğümü listenin sonuna (`tail` tarafına) ekler. |
-| `pop_front` | İlk düğümü (`head`) listeden ayırır ve adresini döndürür; `free` etmez. |
-| `pop_back` | Son düğümü (`tail`) listeden ayırır ve adresini döndürür; `free` etmez. |
-| `add_front` | Düğümü listenin başına (`head` tarafına) ekler. |
-| `compute_disorder` | Stack'in sıralı olmama (düzensizlik) oranını çiftleri karşılaştırarak hesaplar. |
-| `swap_nodes` | Stack'in ilk iki elemanının bağlantılarını takas eden yardımcı fonksiyon. |
-| `sa` / `sb` / `ss` | Stack A, Stack B veya her ikisinin ilk iki elemanını yer değiştirir. |
-| `pa` / `pb` | Stack'in en üstündeki elemanı diğer stack'in en üstüne taşır. |
-| `rotate_nodes` | Baştaki elemanı sona ekleyerek yukarı kaydırma yapan yardımcı fonksiyon (`pop_front` + `add_back`). |
-| `ra` / `rb` / `rr` | Stack A, Stack B veya her ikisini 1 yukarı kaydırır (ilk eleman son eleman olur). |
-| `reverse_rotate_nodes` | Sondaki elemanı başa ekleyerek aşağı kaydırma yapan yardımcı fonksiyon (`pop_back` + `add_front`). |
-| `rra` / `rrb` / `rrr` | Stack A, Stack B veya her ikisini 1 aşağı kaydırır (son eleman ilk eleman olur). |
+| `create_node.c`, `stack_init.c` | `create_node`, `init_stack` |
+| `stack_utils.c` | `add_back`, `pop_front`, `pop_back`, `add_front`, `compute_disorder` |
+| `push_operations.c` | `pa`, `pb` |
+| `swap_operations.c` | `swap_nodes`, `sa`, `sb`, `ss` |
+| `rotate_operations.c` | `rotate_nodes`, `ra`, `rb`, `rr` |
+| `reverse_rotate_operations.c` | `reverse_rotate_nodes`, `rra`, `rrb`, `rrr` |
+| `free_operations.c`, `error_operations.c` | `free_stack`, `free_split`, `error` |
+| `ft_split.c` | Boşlukla ayrılmış girdilerin parçalanması |
+| `push_swap.c` | `get_number`, `is_valid_number`, `parse_args`, `main`; parsing kısmen tamamlandı |
+| `simple_sort.c` | `find_min_position`, `move_min_to_top`, `simple_sort` |
+| `medium_sort.c` | `get_index`, `copy_values`, `sort_array`, `get_sorted_index`; hazırlık aşaması |
+| `medium_sort_utils.c` | `merge_sort`, `merge`; tamamlanmamış deneysel kod |
+| `push_swap.h` | Ortak veri yapıları ve prototipler; düzenleme gerekli |
+| `Makefile`, `test_main.c` | Ana program ve bağımsız Simple Sort testleri |
 
-## Dosya düzeni
+## Sıralama algoritmaları
 
-- `push_swap.h` — Struct tanımları ve kütüphane bildirimleri
-- `create_node.c` — `create_node` (1/5)
-- `stack_init.c` — `init_stack` (1/5)
-- `stack_utils.c` — `add_back`, `pop_front`, `pop_back`, `add_front`, `compute_disorder` (5/5)
-- `push_operations.c` — `pb`, `pa`, `sa`, `sb`, `ss` (5/5)
-- `swap_operations.c` — `swap_nodes` (1/5)
-- `rotate_operations.c` — `ra`, `rb`, `rotate_nodes`, `rr`, `reverse_rotate_nodes`, `rra`, `rrb`, `rrr`
+- **Simple Sort:** Selection Sort / Min Extraction. Minimum elemanlar B'ye taşınır, ardından A'ya geri alınır. Mevcut bağımsız testler başarılıdır. O(n²) yaklaşımı.
+- **Medium Sort:** Chunk-Based Sorting planlanmaktadır. Dizi kopyalama, Insertion Sort ve indeks arama yardımcıları yazıldı. Chunk taşıma ve geri toplama henüz yazılmadı. Merge Sort denemesi tamamlanmadı ve kullanılmıyor. İndeks hazırlama ve hamle karmaşıklığı yeniden değerlendirilecek.
+- **Complex Sort:** Henüz başlanmadı. Radix Sort adaydır; kesin seçim proje subject'ine göre yapılacaktır.
+- **Adaptive seçim:** `compute_disorder` yazıldı ancak algoritma seçimine bağlanmadı.
 
-Dosya düzeni, **42 Norminette'in `.c` dosyası başına en fazla 5 fonksiyon** sınırına göre planlandı. Gerçek dosya konumları repoda kontrol edilmelidir.
+## Derleme ve doğrulama
+
+```sh
+make
+make test
+make fclean
+```
+
+25 Kasım 2026 arşiv incelemesi:
+
+- `make`: başarılı (`-Wall -Wextra -Werror`). Medium dosyaları mevcut Makefile'a dahil değildir; ayrı derlemeleri başarılıdır.
+- `make test`: 5, 10 ve 100 elemanlı mevcut Simple Sort testleri OK. Bunlar kapsamlı rastgele testler değildir.
+- Geçersiz harf ve 2147483648 girdileri hata üretir.
+- Duplicate ve boş string girdileri hatalı biçimde kabul edilir.
+- UBSan ile INT_MIN dönüşümünde ve çok uzun sayı doğrulamasında signed overflow tespit edildi.
+- Ana program henüz sıralama çağırmaz ve başarılı parsing sonrasında stack belleğini temizlemez.
+- Norminette, Valgrind ve resmi checker doğrulanmadı.
 
 ## Yapılacaklar
 
-- [x] Stack veri yapısını seçmek ve struct'ları tasarlamak
-- [x] Stack başlatma ve düğüm oluşturma fonksiyonlarını yazmak
-- [x] Başa/sona ekleme ve baştan/sondan çıkarma yardımcı fonksiyonlarını yazmak (`pop_back` dahil)
-- [x] Push (`pa`, `pb`) işlemlerini yazmak
-- [x] Swap (`sa`, `sb`, `ss`) işlemlerini yazmak
-- [x] Rotate (`ra`, `rb`, `rr`) işlemlerini yazmak
-- [x] Reverse rotate (`rra`, `rrb`, `rrr`) işlemlerini tamamlamak
-- [ ] Bellek temizliği ve sızıntı yönetimi (`free_stack`)
-- [ ] Norminette dosya ve satır sınırları optimizasyonu (örn. `compute_disorder` taşınması)
-- [ ] Girdi doğrulama ve parsing (sayı kontrolü, int taşması, duplicate kontrolü, split)
-- [ ] Hata yönetimi (`write(2, "Error\n", 6)`)
-- [ ] Sıralama algoritmalarını (küçük sayılar ve büyük sayılar için) geliştirmek
-- [ ] Makefile hazırlığı, testler ve optimizasyon
+- [x] Stack veri yapısı ve temel yardımcılar
+- [x] 11 stack operasyonunun implementasyonu
+- [x] Disorder hesaplama fonksiyonu
+- [x] Simple Sort ve mevcut bağımsız testler
+- [x] Bellek temizleme ve hata fonksiyonlarının implementasyonu
+- [ ] Header prototiplerini ve tekrarları düzenleme
+- [ ] Parsing: duplicate, boş girdi, allocation kontrolü ve güvenli sayı dönüşümü
+- [ ] Ana programda bellek temizliği ve sıralama entegrasyonu
+- [ ] Medium Sort tasarımını kesinleştirme ve tamamlama
+- [ ] Complex Sort ve adaptive seçim
+- [ ] Makefile'a tamamlanan algoritmaları ekleme
+- [ ] Norminette, bellek, checker ve hamle sayısı testleri
 
-## Nerede kaldık?
+## İş bölümü ve sıradaki adım
 
-**Son tamamlanan işlemler:** Tüm temel push_swap hareketleri (`pa`/`pb`, `sa`/`sb`/`ss`, `ra`/`rb`/`rr`, `rra`/`rrb`/`rrr`), stack yardımcıları (`pop_front`, `pop_back`, `add_front`, `add_back`), `compute_disorder` ve bağımsız test sürücüsü (`make test`).
+Parsing ve bellek yönetimi ile sıralama motoru ayrı geliştirilir. Ortak dosyalar koordineli değiştirilir. Ayrıntılar için [TASK_PLAN.md](TASK_PLAN.md).
 
-**İş Bölümü ve Yol Haritası:** Takım çalışması, dosya sorumlulukları ve conflict önleme kuralları için [TASK_PLAN.md](TASK_PLAN.md) belgesine bakınız.
-
-**Bir sonraki adım:** Bellek temizliği (`free_stack`) fonksiyonunu yazmak, ardından girdi ayrıştırma (parsing) ve sıralama algoritmalarına paralel olarak geçmek.
-
-> **Not:** Bu belge tamamlanmış ve test edilmiş bir projeyi değil, çalışma sırasında ulaşılan noktayı özetler. Fonksiyonlar mantıksal olarak incelendi; derleme, Norminette ve otomatik test sonuçları henüz doğrulanmadı.
+Önce header temizliği ve parsing güvenliği; paralel olarak Medium Sort için ortak indeksleme tasarımı. Sonrasında Complex Sort, entegrasyon ve kapsamlı testler.

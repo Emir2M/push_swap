@@ -6,7 +6,7 @@
 /*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:30:39 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/22 18:39:56 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 17:02:44 by emirhyil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_node	*create_node(int value)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	new_node->value = value;
+	new_node->index = -1;
 	return (new_node);
 }
