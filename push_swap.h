@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:45:00 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/23 18:27:15 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/25 15:19:15 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -68,6 +69,15 @@ int find_min_position(t_stack *a);
 void	move_min_to_top(t_stack *a);
 void	simple_sort(t_stack *a, t_stack *b);
 
+/* Free operations */
+void	free_stack(t_stack *stack);
+void	free_split(char **split);
+
+/* Error operations */
+void	error(t_stack *stack, char **numbers);
+
+/* Split */
+char	**ft_split(char const *s, char c);
 /* free stack  */
 void	free_stack(t_stack *stack);
 
