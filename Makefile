@@ -17,6 +17,8 @@ SRCS = create_node.c \
        init_config.c \
        count_op.c \
        execute_sort.c \
+       bench_utils.c \
+       bench_print.c \
        ft_strcmp.c \
        ft_split.c \
        parsing.c \

@@ -124,6 +124,10 @@ void				execute_sort(t_stack *a, t_stack *b, t_config *config);
 /* Config & Parsing operations */
 void				init_config(t_config *config);
 void				count_op(t_stack *stack, t_op op);
+void				putstr_err(const char *s);
+void				putnbr_err(int n);
+void				print_op_err(const char *name, int count, int sep);
+void				print_bench(t_config *config);
 int					is_valid_number(char *number);
 int					get_number(const char *number);
 int					has_duplicate(t_stack *stack, int num);

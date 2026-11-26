@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	parse_args(argc, argv, &a, &config);
 	config.disorder = compute_disorder(&a);
 	execute_sort(&a, &b, &config);
+	print_bench(&config);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
