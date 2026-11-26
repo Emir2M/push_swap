@@ -6,13 +6,13 @@
 /*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 22:17:15 by mmetin            #+#    #+#             */
-/*   Updated: 2026/11/26 02:22:31 by mmetin           ###   ########.fr       */
+/*   Updated: 2026/11/26 02:51:07 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_stack		a;
@@ -27,10 +27,9 @@ int	main(int argc, char **argv)
 	a.config = &config;
 	b.config = &config;
 	parse_args(argc, argv, &a, &config);
+	config.disorder = compute_disorder(&a);
+	execute_sort(&a, &b, &config);
 	free_stack(&a);
 	free_stack(&b);
-	printf("config %u",config.strategy);
-	printf("config bench mode %u",config.bench_mode);
-
 	return (0);
 }

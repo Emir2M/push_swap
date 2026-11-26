@@ -119,6 +119,7 @@ void				simple_sort(t_stack *a, t_stack *b);
 void				medium_sort(t_stack *a, t_stack *b);
 void				complex_sort(t_stack *a, t_stack *b);
 void				adaptive_sort(t_stack *a, t_stack *b);
+void				execute_sort(t_stack *a, t_stack *b, t_config *config);
 
 /* Config & Parsing operations */
 void				init_config(t_config *config);
