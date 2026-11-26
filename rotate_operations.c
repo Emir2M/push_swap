@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emirhyil <emirhyil@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mmetin <mmetin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 18:07:02 by emirhyil          #+#    #+#             */
-/*   Updated: 2026/11/22 18:45:24 by emirhyil         ###   ########.fr       */
+/*   Updated: 2026/11/26 03:55:46 by mmetin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
